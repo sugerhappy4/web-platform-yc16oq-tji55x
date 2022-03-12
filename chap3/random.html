@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>乱数発生</title>
+    <script>
+      function generateRand() {
+        let random = Math.random() * 100;
+
+        document.getElementById("result").innerHTML = "<p>結果：" + random + "</p>";
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>乱数発生プログラム</h1>
+
+    <div id="result"><p>結果：</p></div>
+
+    <p><input type="button" value="乱数発生" onClick="generateRand();" /></p>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>郵便番号から住所を調べるWebアプリ</title>
+    <script src="https://cdn.jsdelivr.net/npm/fetch-jsonp@1.1.3/build/fetch-jsonp.min.js"></script>
+    <script>
+      function zipsearch() {
+        var api = "https://zipcloud.ibsnet.co.jp/api/search?zipcode=";
+        var zipcode = document.getElementById("zipcode").value.trim();
+        var url = api + zipcode;
+
+        if (!zipcode.match(/[0-9]{7}/)) {
+          document.getElementById("result_message").innerHTML = "<p>7桁の半角数字（ハイフン無し）を入力してください<p>";
+        } else {
+          fetchJsonp(url, {
+            timeout: 10000,
+          })
+            .then((response) => {
+              return response.json();
+            })
+            .then((data) => {
+              if (data.status === 400) {
+                document.getElementById("result_message").innerHTML = "<p>通信エラー<p>";
+              } else if (data.results === null) {
+                document.getElementById("result_message").innerHTML = "<p>住所が見つかりません。<p>";
+              } else {
+                let address = data.results[0].address1 + data.results[0].address2 + data.results[0].address3;
+                document.getElementById("result_message").innerHTML = "<p>" + address + "<p>";
+                console.log(data.results[0]);
+              }
+            });
+        }
+      }
+    </script>
+    <style>
+      h1 {
+        font-size: large;
+      }
+      p.sample {
+        font-size: small;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>郵便番号から住所を調べるWebアプリ</h1>
+    <p>郵便番号：<input type="text" id="zipcode" value="" /></p>
+    <p class="sample">※入力例：1010047 (半角数字7桁)</p>
+    <p><input type="button" value="検索" onClick="zipsearch();" /></p>
+
+    <div id="result_message"></div>
+  </body>
+</html>

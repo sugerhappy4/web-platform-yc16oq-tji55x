@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>おみくじプログラム</title>
+    <script>
+      function omikuji() {
+        let random = Math.random() * 100;
+        let unsei = ""; //運勢の初期値はカラ文字
+
+        if (random >= 50) {
+          unsei = "大吉";
+        } else {
+          unsei = "凶";
+        }
+
+        document.getElementById("result").innerHTML = "<p>結果：" + unsei + "</p>";
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>おみくじプログラム</h1>
+    <p>名前：<input type="text" id="name" value="名無し" /></p>
+
+    <div id="result"><p>結果：</p></div>
+
+    <p><input type="button" value="おみくじを引く！" onClick="omikuji();" /></p>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>サンプル</title>
+    <script>
+      function outputMessageBox() {
+        alert("おはよう！");
+      }
+
+      function outputConsole() {
+        console.log("Good morning!");
+      }
+
+      function outputContents() {
+        document.getElementById("greeting").innerHTML = "オッハー！";
+      }
+    </script>
+  </head>
+
+  <body>
+    <div id="greeting">おはようございます</div>
+
+    <p><input type="button" value="MSGボックス" onclick="outputMessageBox()" /></p>
+    <p><input type="button" value="コンソール" onclick="outputConsole()" /></p>
+    <p><input type="button" value="コンテンツ表示領域" onclick="outputContents()" /></p>
+  </body>
+</html>

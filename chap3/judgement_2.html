@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <title>合否判定プログラム</title>
+    <script>
+      function judgement() {
+        let score = document.getElementById("score").value;
+
+        if (score >= 80) {
+          document.getElementById("result").innerHTML = "<p>結果：合格！</p>";
+        } else {
+          document.getElementById("result").innerHTML = "<p>結果：残念</p>";
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <h1>合否判定プログラム</h1>
+    <p>点数：<input type="text" id="score" value="" /></p>
+
+    <div id="result"><p>結果：</p></div>
+
+    <p><input type="button" value="判定" onClick="judgement();" /></p>
+  </body>
+</html>
